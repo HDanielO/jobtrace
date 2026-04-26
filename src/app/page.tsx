@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { FileChartColumn, ListTodo, ShelvingUnit } from "lucide-react";
 
 export default function LandingPage() {
   return (
@@ -39,12 +40,12 @@ export default function LandingPage() {
               every role.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <Link href="/signup" className="w-full sm:w-auto">
+              <Link href="/signup" className="w-full sm:w-7/10">
                 <Button size="lg" className="w-full">
                   Get Started for Free
                 </Button>
               </Link>
-              <Link href="/login" className="w-full sm:w-auto">
+              <Link href="/login" className="w-full sm:w-7/10">
                 <Button variant="outline" size="lg" className="w-full">
                   Log In
                 </Button>
@@ -58,7 +59,7 @@ export default function LandingPage() {
           <div className="grid gap-8 md:grid-cols-3">
             <div className="flex flex-col items-center text-center space-y-4 p-8 bg-muted/30 rounded-2xl border border-border/50">
               <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xl">
-                1
+                <FileChartColumn />
               </div>
               <h3 className="text-xl font-bold">Smart Status Tracking</h3>
               <p className="text-muted-foreground">
@@ -68,7 +69,7 @@ export default function LandingPage() {
             </div>
             <div className="flex flex-col items-center text-center space-y-4 p-8 bg-muted/30 rounded-2xl border border-border/50">
               <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xl">
-                2
+                <ListTodo />
               </div>
               <h3 className="text-xl font-bold">Targeted To-Do Lists</h3>
               <p className="text-muted-foreground">
@@ -78,7 +79,7 @@ export default function LandingPage() {
             </div>
             <div className="flex flex-col items-center text-center space-y-4 p-8 bg-muted/30 rounded-2xl border border-border/50">
               <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xl">
-                3
+                <ShelvingUnit />
               </div>
               <h3 className="text-xl font-bold">Organized Workflow</h3>
               <p className="text-muted-foreground">
