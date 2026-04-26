@@ -45,13 +45,17 @@ export default function SignUpPage() {
               <Input
                 id="email"
                 type="email"
-                placeholder="m@example.com"
+                placeholder="bulabu@example.com"
                 required
               />
             </div>
             <div className="space-y-2 text-left">
               <Label htmlFor="password">Password</Label>
               <Input id="password" type="password" required />
+            </div>
+            <div className="space-y-2 text-left">
+              <Label htmlFor="confirm-password">Confirm Password</Label>
+              <Input id="confirm-password" type="password" required />
             </div>
             <Button className="w-full" size="lg" type="button">
               Sign Up
