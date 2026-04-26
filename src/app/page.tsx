@@ -4,7 +4,10 @@ import { FileChartColumn, ListTodo, ShelvingUnit } from "lucide-react";
 
 export default function LandingPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col relative">
+      {/* Background Texture (Net/Grid) */}
+      <div className="fixed inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#8080801a_1px,transparent_1px),linear-gradient(to_bottom,#8080801a_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+
       {/* 1. Simple Public Navbar (Only visible when logged out) */}
       <header className="container mx-auto flex h-16 items-center justify-between px-4 max-w-7xl">
         <div className="flex items-center gap-2">
@@ -57,32 +60,32 @@ export default function LandingPage() {
         {/* 3. Feature Cards Section */}
         <section className="container mx-auto px-4 py-16 max-w-7xl">
           <div className="grid gap-8 md:grid-cols-3">
-            <div className="flex flex-col items-center text-center space-y-4 p-8 bg-muted/30 rounded-2xl border border-border/50">
-              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xl">
+            <div className="flex flex-col items-center text-center space-y-4 p-8 bg-black text-white rounded-2xl border border-border/50 ">
+              <div className="h-12 w-12 rounded-full bg-white/10 flex items-center justify-center text-white font-bold text-xl">
                 <FileChartColumn />
               </div>
               <h3 className="text-xl font-bold">Smart Status Tracking</h3>
-              <p className="text-muted-foreground">
+              <p className="text-white/70">
                 Keep an eye on exactly where you stand. From &quot;Applied&quot;
                 to &quot;Accepted&quot;, never wonder about a role again.
               </p>
             </div>
-            <div className="flex flex-col items-center text-center space-y-4 p-8 bg-muted/30 rounded-2xl border border-border/50">
-              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xl">
+            <div className="flex flex-col items-center text-center space-y-4 p-8 bg-black text-white rounded-2xl border border-border/50 ">
+              <div className="h-12 w-12 rounded-full bg-white/10 flex items-center justify-center text-white font-bold text-xl">
                 <ListTodo />
               </div>
               <h3 className="text-xl font-bold">Targeted To-Do Lists</h3>
-              <p className="text-muted-foreground">
+              <p className="text-white/70">
                 Add specific tasks to each application. Need to tailor your
                 resume or prepare for a technical interview? Track it here.
               </p>
             </div>
-            <div className="flex flex-col items-center text-center space-y-4 p-8 bg-muted/30 rounded-2xl border border-border/50">
-              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xl">
+            <div className="flex flex-col items-center text-center space-y-4 p-8 bg-black text-white rounded-2xl border border-border/50 ">
+              <div className="h-12 w-12 rounded-full bg-white/10 flex items-center justify-center text-white font-bold text-xl">
                 <ShelvingUnit />
               </div>
               <h3 className="text-xl font-bold">Organized Workflow</h3>
-              <p className="text-muted-foreground">
+              <p className="text-white/70">
                 Ditch the messy spreadsheets. Get a beautiful, centralized
                 dashboard for your entire job hunting journey.
               </p>
