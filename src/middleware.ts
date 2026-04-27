@@ -1,7 +1,10 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-export async function proxy(request: NextRequest) {
+export async function middleware(request: NextRequest) {
+  // ADD THIS LINE: Temp bypass for UI development to let everyone in!
+  return NextResponse.next();
+
   // 1. Create a response object that we can modify
   let response = NextResponse.next({
     request: {
