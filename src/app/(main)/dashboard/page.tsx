@@ -6,6 +6,19 @@ import { Briefcase, Clock, Plus, FileText, Flag, Filter } from "lucide-react";
 import { StatCards, StatCardData } from "@/components/dashboard/StatCards";
 import { DataToolbar, ToolbarButton } from "@/components/dashboard/DataToolbar";
 
+// --- Helper Function for Status Badge Colors ---
+const getStatusConfig = (status: string) => {
+  switch (status) {
+    case "not_applied": return { bg: "bg-slate-500/10", text: "text-slate-500", dot: "bg-slate-500" };
+    case "in_progress": return { bg: "bg-amber-500/10", text: "text-amber-500", dot: "bg-amber-500" };
+    case "progressed": return { bg: "bg-blue-500/10", text: "text-blue-500", dot: "bg-blue-500" };
+    case "accepted": return { bg: "bg-emerald-500/10", text: "text-emerald-500", dot: "bg-emerald-500" };
+    case "rejected": return { bg: "bg-red-500/10", text: "text-red-500", dot: "bg-red-500" };
+    case "completed": return { bg: "bg-purple-500/10", text: "text-purple-500", dot: "bg-purple-500" };
+    default: return { bg: "bg-primary/10", text: "text-primary", dot: "bg-primary" };
+  }
+};
+
 export default function DashboardPage() {
   const totalJobs = dummyJobs.length;
   const notAppliedJobs = dummyJobs.filter(
@@ -90,23 +103,48 @@ export default function DashboardPage() {
 
         {/* The List of Jobs */}
         <div className="grid gap-4">
-          {dummyJobs.map((job) => (
-            <Card key={job.id} className="hover:bg-muted/50 transition-colors">
-              <CardContent className="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div>
-                  <h3 className="font-semibold text-lg">{job.title}</h3>
-                  <p className="text-muted-foreground text-sm">
-                    {job.company} • {job.location}
-                  </p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-primary/10 text-primary uppercase tracking-wider">
-                    {job.status.replace("_", " ")}
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          {dummyJobs.map((job) => {
+            // 1. Get the colors for this specific status
+            const statusConfig = getStatusConfig(job.status);
+            
+            // 2. Format the date nicely (e.g., "Apr 25, 2026")
+            const formattedDate = new Intl.DateTimeFormat('en-US', { 
+              month: 'short', day: 'numeric', year: 'numeric' 
+            }).format(new Date(job.created_at));
+
+            return (
+              <Card key={job.id} className="hover:bg-muted/50 transition-colors">
+                <CardContent className="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  
+                  {/* Left Side: Job Details */}
+                  <div className="space-y-1">
+                    <h3 className="font-semibold text-lg">{job.title}</h3>
+                    <div className="flex flex-wrap items-center text-sm text-muted-foreground gap-2">
+                      <span>{job.company}</span>
+                      <span>•</span>
+                      <span>{job.location}</span>
+                      <span>•</span>
+                      <span className="capitalize">{job.job_type}</span>
+                      <span>•</span>
+                      <span>{formattedDate}</span>
+                    </div>
+                  </div>
+
+                  {/* Right Side: Status Badge */}
+                  <div className="flex items-center gap-2 shrink-0">
+                    <span 
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium uppercase tracking-wider ${statusConfig.bg} ${statusConfig.text}`}
+                    >
+                      {/* The colored dot */}
+                      <span className={`h-1.5 w-1.5 rounded-full ${statusConfig.dot}`}></span>
+                      {job.status.replace("_", " ")}
+                    </span>
+                  </div>
+
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </div>

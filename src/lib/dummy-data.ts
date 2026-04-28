@@ -105,6 +105,25 @@ export const dummyJobs: Job[] = [
     created_at: "2026-02-10T08:00:00Z",
     updated_at: "2026-04-25T16:20:00Z",
   },
+  {
+    id: "job-6",
+    user_id: "user-123",
+    title: "Fullstack Engineer",
+    company: "Google",
+    location: "London, UK",
+    job_type: "unknown",
+    status: "completed",
+    url: "https://careers.google.com",
+    todos: [
+      {
+        id: "t10",
+        text: "Reflect on the interview process",
+        is_completed: true,
+      },
+    ],
+    created_at: "2026-01-05T08:00:00Z",
+    updated_at: "2026-02-05T16:20:00Z",
+  },
 ];
 
 export const getDummyMetrics = () => {
@@ -115,5 +134,6 @@ export const getDummyMetrics = () => {
     accepted: dummyJobs.filter((j) => j.status === "accepted").length,
     rejected: dummyJobs.filter((j) => j.status === "rejected").length,
     notApplied: dummyJobs.filter((j) => j.status === "not_applied").length,
+    completed: dummyJobs.filter((j) => j.status === "completed").length,
   };
 };
